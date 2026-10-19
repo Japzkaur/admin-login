@@ -1,0 +1,38 @@
+name: Deploy Admin Portal to Frontend EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Build & Deploy to Apache Port 8080
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to Frontend EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}       # 13.214.151.97
+          username: ${{ secrets.EC2_USER }}   # ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}     # Private key content (.pem)
+          port: 22
+          script_stop: true
+          script: |
+            echo "🚀 Starting deployment for Admin Login Portal..."
+            cd /var/www/admin-login
+
+            # 1. Fetch latest changes from GitHub
+            git fetch origin main
+            git reset --hard origin/main
+
+            # 2. Install dependencies & build
+            npm install --production=false
+            npm run build
+
+            # 3. Ensure Apache permissions
+            sudo chown -R apache:apache /var/www/admin-login/dist
+            sudo chmod -R 755 /var/www/admin-login/dist
+
+            echo "✅ Admin Portal successfully deployed to Port 8080!"
