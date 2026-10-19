@@ -40,7 +40,10 @@ export default function App() {
           isDarkMode={isDarkMode}
           adminEmail={adminEmail}
           onLogout={handleLogout}
+<<<<<<< HEAD
           onToggleTheme={() => setIsDarkMode(prev => !prev)}
+=======
+>>>>>>> 172398337f1a24c76f17ee7996fb818eb5781fed
         />
       )}
     </div>

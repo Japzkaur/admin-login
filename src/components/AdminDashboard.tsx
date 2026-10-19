@@ -29,9 +29,13 @@ import {
   ShieldCheck, 
   Server,
   Users,
+<<<<<<< HEAD
   Shield,
   Sun,
   Moon
+=======
+  Shield
+>>>>>>> 172398337f1a24c76f17ee7996fb818eb5781fed
 } from 'lucide-react';
 import { UserManagementView } from './UserManagementView';
 
@@ -39,14 +43,20 @@ interface AdminDashboardProps {
   isDarkMode: boolean;
   adminEmail: string;
   onLogout: () => void;
+<<<<<<< HEAD
   onToggleTheme?: () => void;
+=======
+>>>>>>> 172398337f1a24c76f17ee7996fb818eb5781fed
 }
 
 export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   isDarkMode,
   adminEmail,
   onLogout,
+<<<<<<< HEAD
   onToggleTheme,
+=======
+>>>>>>> 172398337f1a24c76f17ee7996fb818eb5781fed
 }) => {
   const [activeSection, setActiveSection] = useState<'inquiries' | 'users'>('inquiries');
   const [inquiries, setInquiries] = useState<ClientInquiry[]>([]);
@@ -229,6 +239,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           </div>
 
           <div className="flex items-center gap-3 text-xs">
+<<<<<<< HEAD
             {onToggleTheme && (
               <button
                 type="button"
@@ -239,6 +250,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 {isDarkMode ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
               </button>
             )}
+=======
+>>>>>>> 172398337f1a24c76f17ee7996fb818eb5781fed
             <span className="hidden sm:inline text-stone-300">{adminEmail}</span>
             <button
               onClick={onLogout}
